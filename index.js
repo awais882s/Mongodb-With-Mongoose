@@ -4,11 +4,19 @@ const main = async () => {
     // Define your schema and model
     const ProductSchema = new mongoose.Schema({
         name: String,
-        price: Number
+        price: Number,
+        brand: String,
+        catagory: String
     });
 
     const ProductModel = mongoose.model("products", ProductSchema);
-    let data = new ProductModel({ name: "m8", price: 1000 });
+    let data = new ProductModel(
+        {
+            name: "m8",
+            price: 1000,
+            brand: "max",
+            catagory: "mobiles"
+        });
     let result = await data.save();
     console.log(result);
 }
