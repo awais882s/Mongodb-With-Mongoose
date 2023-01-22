@@ -1,6 +1,14 @@
 const mongoose = require("mongoose");
 const main = async () => {
-    await mongoose.connect("mongodb+srv://admin:admin@cluster0.cfg2fvd.mongodb.net/test");
+    mongoose.connect("mongodb+srv://admin:admin@cluster0.cfg2fvd.mongodb.net/e-comm", {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    }
+
+    );
+    // Set strictQuery to false
+    mongoose.set('strictQuery', true);
+    // Set strictQuery to false
     const ProductSchema = new mongoose.Schema({
         name: String
     });
