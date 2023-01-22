@@ -39,4 +39,27 @@ const updateInDB = async () => {
     );
     console.log(data);
 }
-updateInDB();
+
+
+// Delete in Database
+
+const deleteInDB = async () => {
+    mongoose.connect("mongodb+srv://admin:admin@cluster0.cfg2fvd.mongodb.net/e-comm");
+    // Define your schema 
+    const productSchema = new mongoose.Schema({
+        name: String,
+        price: Number,
+        brand: String,
+        catagory: String
+    });
+
+    const Product = mongoose.model("products", productSchema);
+    let data = await Product.deleteOne(
+        { name: "m8" }
+
+    )
+    console.log(data)
+
+}
+
+deleteInDB();
