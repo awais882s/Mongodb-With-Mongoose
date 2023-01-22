@@ -62,4 +62,18 @@ const deleteInDB = async () => {
 
 }
 
-deleteInDB();
+const findInDB = async () => {
+    mongoose.connect("mongodb+srv://admin:admin@cluster0.cfg2fvd.mongodb.net/e-comm");
+    // Define your schema 
+    const productSchema = new mongoose.Schema({
+        name: String,
+        price: Number,
+        brand: String,
+        catagory: String
+    });
+
+    const Product = mongoose.model("products", productSchema);
+    let data = await Product.find();
+    console.log(data)
+}
+findInDB();
