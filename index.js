@@ -7,7 +7,7 @@ const main = async () => {
 
     );
     // Set strictQuery to false
-    mongoose.set('strictQuery', true);
+    mongoose.set('strictQuery', false);
     // Set strictQuery to false
     const ProductSchema = new mongoose.Schema({
         name: String
