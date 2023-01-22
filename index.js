@@ -1,16 +1,16 @@
 const mongoose = require("mongoose");
-const main = async () => {
+const saveInDB = async () => {
     mongoose.connect("mongodb+srv://admin:admin@cluster0.cfg2fvd.mongodb.net/e-comm");
-    // Define your schema and model
-    const ProductSchema = new mongoose.Schema({
+    // Define your schema 
+    const productSchema = new mongoose.Schema({
         name: String,
         price: Number,
         brand: String,
         catagory: String
     });
-
-    const ProductModel = mongoose.model("products", ProductSchema);
-    let data = new ProductModel(
+    // Define your model
+    const Product = mongoose.model("products", productSchema);
+    let data = new Product(
         {
             name: "m8",
             price: 1000,
@@ -21,4 +21,22 @@ const main = async () => {
     console.log(result);
 }
 
-main();
+
+// Update Model In DataBase
+const updateInDB = async () => {
+    mongoose.connect("mongodb+srv://admin:admin@cluster0.cfg2fvd.mongodb.net/e-comm");
+    // Define your schema 
+    const productSchema = new mongoose.Schema({
+        name: String,
+        price: Number,
+        brand: String,
+        catagory: String
+    });
+    const Product = mongoose.model("products", productSchema);
+    let data = await Product.updateOne(
+        { name: "m8" },
+        { $set: { price: 2000 } }
+    );
+    console.log(data);
+}
+updateInDB();
